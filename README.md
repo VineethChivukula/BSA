@@ -119,8 +119,8 @@ BSA
 
 ## Contributors
 
-- **[Sai Kumar Gouru]** - Designed the problem statement
-- **[Vineeth Chivukula]** - Code and logic
+- **[Sai Kumar Gouru](https://www.linkedin.com/in/sai-kumar-gouru-972623a8/)** - Designed the problem statement
+- **[Vineeth Chivukula](https://www.linkedin.com/in/vineethchivukula)** - Code and logic
 
 
 ## License
@@ -130,4 +130,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - I would like to extend my sincere gratitude to [Hema](https://www.linkedin.com/in/hemaannaluru/) and [Srujana](https://www.linkedin.com/in/srujanavattamwar/) for their invaluable support. Their patience and belief in my abilities were instrumental in the successful completion of this work.
-```
