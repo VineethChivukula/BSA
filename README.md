@@ -119,7 +119,7 @@ BSA
 
 ## Scripts Explanation
 
-- **generate_transactions.py**: 
+1. **generate_transactions.py**: 
 This script defines a process for generating random transactions for multiple companies and their branches, saving these transactions to CSV files. Here are the details:
 
    1. **generate_random_transactions**:
@@ -148,7 +148,7 @@ This script defines a process for generating random transactions for multiple co
       - Saves the generated transactions to a CSV file using `save_transactions_to_csv`.
       - Prints a confirmation message for each generated statement.
 
-- **upload_to_s3.py**:
+2. **upload_to_s3.py**:
 This script defines a function to upload CSV files from a local directory to an S3 bucket using a client from a utility module. Here are the details:
 
    1. **upload**:
@@ -162,7 +162,7 @@ This script defines a function to upload CSV files from a local directory to an 
       - Prints a confirmation message once all files are uploaded.
       - Prints an error message if there is an issue creating the directory or any other unexpected error occurs during the process.
 
-- **download_from_s3.py**: 
+3. **download_from_s3.py**: 
 The code snippet defines functions for listing and downloading CSV files from an S3 bucket based on the specified year and month. Here are the details:
 
    1. **list_s3_files(bucket, year, month)**:
@@ -180,7 +180,7 @@ The code snippet defines functions for listing and downloading CSV files from an
       - If no matching statements are found in the S3 bucket, it prints an appropriate message and exits the program with an error code.
       - Any exceptions that occur during the process are caught and printed.
 
-- **update_database.py**: 
+4. **update_database.py**: 
 This script outlines functions for reading CSV files, creating or retrieving database entities, and saving transactions to the database. Here are the details:
 
    1. **read_csv(file_path)**:
@@ -230,7 +230,7 @@ This script outlines functions for reading CSV files, creating or retrieving dat
       - Prints a confirmation message upon successful saving.
       - Prints an error message if there is an issue updating the database.
 
-- **aggregate_statements.py**: 
+5. **aggregate_statements.py**: 
 This script provides functions for fetching, aggregating, and saving transaction data for a specified company, year, and month. Here are the details:
 
    1. **get_transactions_for_company(company_name, year, month)**:
