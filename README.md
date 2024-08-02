@@ -99,22 +99,21 @@ BSA
 
 4. **Configure Database**
 
-   Follow the below commands to create the necessary MySQL database and tables using the sql scripts provided in the `migrations` directory.
    ```bash
-      cd migrations
-      mysql -u your_username -p
-      your_password
-      create database bsa
-      source 001_create_company_table.sql
-      source 002_create_branch_table.sql
-      source 003_create_user_table.sql
-      source 004_create_bank_statement_table.sql
-      source 005_create_transaction_table.sql
+   cd migrations
+   mysql -u your_username -p
+   your_password
+   create database bsa
+   source 001_create_company_table.sql
+   source 002_create_branch_table.sql
+   source 003_create_user_table.sql
+   source 004_create_bank_statement_table.sql
+   source 005_create_transaction_table.sql
    ```
 
 5. **Configure AWS S3**
 
-   - Ensure you have AWS credentials set up with access to the S3 bucket.
+   Ensure you have AWS credentials set up with access to the S3 bucket.
 
 ## Usage
 
