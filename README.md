@@ -93,7 +93,7 @@ BSA
    cd migrations
    mysql -u your_username -p
    your_password
-   create database bsa;   
+   create database your_database;   
    source 001_create_company_table.sql
    source 002_create_branch_table.sql
    source 003_create_user_table.sql
