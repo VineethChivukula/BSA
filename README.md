@@ -7,16 +7,23 @@ The Bank Statement Aggregator is a comprehensive system designed to manage and p
 ## Features
 
 - **generate_transactions.py**: 
-This script defines details for several companies, each with specific branches and associated users. The companies included are Apple India, Apple US, Google India, and Google US. 
+This script defines details for several companies, each with specific branches and associated users. The companies included are Apple India, Apple US, Google India, and Google US. Each branch has a unique branch ID and is linked to a particular user and company ID, facilitating transaction generation and record-keeping for these companies across their multiple locations.
 
    - **Apple India** has branches in Hyderabad (branch ID: 1), Mumbai (branch ID: 2), and Bangalore (branch ID: 3). It uses SBI as its bank and is associated with user ID 1 and company ID 1.
    - **Apple US** operates in New York (branch ID: 4), San Francisco (branch ID: 5), and Los Angeles (branch ID: 6), with Chase as its bank, user ID 2, and company ID 2.
    - **Google India** has branches in Bangalore (branch ID: 7), Delhi (branch ID: 8), and Pune (branch ID: 9). It also uses SBI as its bank, with user ID 3 and company ID 3.
    - **Google US** has branches in Mountain View (branch ID: 10), Seattle (branch ID: 11), and Austin (branch ID: 12), with Chase as its bank, user ID 4, and company ID 4.
 
-Each branch has a unique branch ID and is linked to a particular user and company ID, facilitating transaction generation and record-keeping for these companies across their multiple locations.
+- **Upload Statements to S3**:
+   This script defines a function to upload CSV files from a local directory to an S3 bucket using a client from a utility module. Here are the details:
 
-- **Upload Statements to S3**: Uploads the generated CSV files containing transactions to an S3 bucket.
+   - It creates a directory named `gen_data` if it doesn't already exist, ensuring a dedicated space for generated data.
+   - It traverses the `gen_data` directory, searching for files with the `.csv` extension.
+   - For each CSV file found, the code attempts to upload the file to an S3 bucket using the `S3Client.upload_file` method.
+   - Upon successful upload, the S3 URL of the uploaded file is printed to the console.
+   - If an error occurs during the upload process, an error message is displayed, indicating which file could not be uploaded and the reason for the failure.
+   - Finally, a message is printed to confirm that all files have been processed for upload.
+
 - **Download Statements from S3**: Downloads the CSV files from the S3 bucket to the local system.
 - **Update Database**: Inserts the downloaded transactions into the database.
 - **Aggregate Data**: Aggregates transactions for selected companies and saves the aggregated data into a CSV file.
