@@ -23,6 +23,7 @@ The Bank Statement Aggregator is a comprehensive system designed to manage and p
 
 ```
 BSA
+├── .venv
 ├── app
 |   ├── controllers
 |   |   ├── __init__.py 
@@ -31,17 +32,17 @@ BSA
 │   │   ├── statement_controller.py
 │   │   └── user_controller.py
 │   ├── models
-│   │   ├── user.py
-│   │   ├── company.py
-│   │   ├── branch.py
 │   │   ├── bank_statement.py
-│   │   └── transaction.py
+│   │   ├── branch.py
+│   │   ├── company.py
+│   │   ├── transaction.py
+│   │   └── user.py
 │   ├── repositories
-│   │   ├── user_repository.py
-│   │   ├── company_repository.py
-│   │   ├── branch_repository.py
 │   │   ├── bank_statement_repository.py
-│   │   └── transaction_repository.py
+│   │   ├── branch_repository.py
+│   │   ├── company_repository.py
+│   │   ├── transaction_repository.py
+│   │   └── user_repository.py
 │   ├── services
 │   │   ├── aws_service.py
 │   │   ├── bank_statement_service.py
@@ -52,7 +53,8 @@ BSA
 │   │   ├── db.py
 │   │   ├── parser.py
 │   │   └── s3.py
-│   └── __init__.py 
+│   ├── __init__.py 
+│   └── config.py 
 ├── migrations
 │   ├── 001_create_company_table.sql
 │   ├── 002_create_branch_table.sql
@@ -60,15 +62,17 @@ BSA
 │   ├── 004_create_bank_statement_table.sql
 │   └── 005_create_transaction_table.sql
 ├── scripts
-│   ├── generate_transactions.py
-│   ├── upload_to_s3.py
+│   ├── aggregate_statements.py
 │   ├── download_from_s3.py
+│   ├── generate_transactions.py
 │   ├── update_database.py
-│   └── aggregate_statements.py
-├── .venv
-├── requirements.txt
+│   └── upload_to_s3.py
+├── .env
+├── .gitignore
+├── .LICENSE
+├── main.py
 ├── README.md
-└── main.py
+└── requirements.txt
 ```
 
 ## Setup Instructions
