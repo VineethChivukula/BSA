@@ -1,6 +1,3 @@
-Here is the content of the `README.md` file. You can copy and save it manually:
-
-```markdown
 # Bank Statement Aggregator
 
 ## Project Overview
@@ -25,7 +22,7 @@ The Bank Statement Aggregator is a comprehensive system designed to manage and p
 ## Project Structure
 
 ```
-.
+BSA
 ├── app
 |   ├── controllers
 |   |   ├── __init__.py 
