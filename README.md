@@ -6,7 +6,16 @@ The Bank Statement Aggregator is a comprehensive system designed to manage and p
 
 ## Features
 
-- **Generate Random Transactions**: Generates random transactions for multiple companies and branches.
+- **generate_transactions.py**: 
+This script defines details for several companies, each with specific branches and associated users. The companies included are Apple India, Apple US, Google India, and Google US. 
+
+   - **Apple India** has branches in Hyderabad (branch ID: 1), Mumbai (branch ID: 2), and Bangalore (branch ID: 3). It uses SBI as its bank and is associated with user ID 1 and company ID 1.
+   - **Apple US** operates in New York (branch ID: 4), San Francisco (branch ID: 5), and Los Angeles (branch ID: 6), with Chase as its bank, user ID 2, and company ID 2.
+   - **Google India** has branches in Bangalore (branch ID: 7), Delhi (branch ID: 8), and Pune (branch ID: 9). It also uses SBI as its bank, with user ID 3 and company ID 3.
+   - **Google US** has branches in Mountain View (branch ID: 10), Seattle (branch ID: 11), and Austin (branch ID: 12), with Chase as its bank, user ID 4, and company ID 4.
+
+Each branch has a unique branch ID and is linked to a particular user and company ID, facilitating transaction generation and record-keeping for these companies across their multiple locations.
+
 - **Upload Statements to S3**: Uploads the generated CSV files containing transactions to an S3 bucket.
 - **Download Statements from S3**: Downloads the CSV files from the S3 bucket to the local system.
 - **Update Database**: Inserts the downloaded transactions into the database.
