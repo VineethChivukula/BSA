@@ -105,8 +105,7 @@ BSA
 
    Ensure you have AWS credentials set up with access to the S3 bucket.
 
-## Run The Application
-This script creates random transactions for designated companies and branches. It then uploads the generated CSV files to a specified S3 bucket, downloads the CSV files from the S3 bucket to the local system, reads the downloaded CSV files, updates the transactions in the database, aggregates transactions for the selected company, and saves the aggregated data into a CSV file.
+6. **Run The Application**
 
    ```bash
    python main.py
