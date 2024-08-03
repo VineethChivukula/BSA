@@ -106,7 +106,7 @@ BSA
 
    Ensure you have AWS credentials set up with access to the S3 bucket. Under the bucket settings in the Permissions section, uncheck all the options for blocking all public access, and then copy and paste the policy code below into the bucket policy.
 
-   ```bash
+   ```json
    {
       "Version": "2012-10-17",
       "Statement": [
