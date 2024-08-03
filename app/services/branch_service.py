@@ -1,6 +1,21 @@
 from app.repositories.branch_repository import BranchRepository
 
+
 class BranchService:
+    """
+    Add a new branch to the system.
+    Args:
+        data (dict): A dictionary containing the branch data.
+    Raises:
+        Exception: If an error occurs while adding the branch.
+    """
+    """
+    Retrieve all branches from the system.
+    Returns:
+        list: A list of branches.
+    Raises:
+        Exception: If an error occurs while retrieving the branches.
+    """
     @staticmethod
     def add_branch(data):
         try:

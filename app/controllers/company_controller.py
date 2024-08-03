@@ -6,6 +6,32 @@ company_bp = Blueprint('company_bp', __name__)
 
 @company_bp.route('/companies', methods=['POST'])
 def add_company():
+    """
+    Add a new company.
+
+    This endpoint allows the user to add a new company to the system.
+
+    Parameters:
+        data (dict): A dictionary containing the company data.
+
+    Returns:
+        A JSON response with a success message if the company is added successfully, or an error message if an exception occurs.
+
+    Raises:
+        Exception: If an error occurs while adding the company.
+
+    Example Usage:
+        POST /companies
+        {
+            "name": "ABC Company",
+            "address": "123 Main St",
+            "city": "New York",
+            "country": "USA"
+        }
+    """
+
+
+def add_company():
     data = request.get_json()
     try:
         CompanyService.add_company(data)

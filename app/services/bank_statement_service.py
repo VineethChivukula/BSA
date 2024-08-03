@@ -1,7 +1,6 @@
 from datetime import datetime
 import os
 from app.repositories.branch_repository import BranchRepository
-from app.repositories.company_repository import CompanyRepository  # Ensure this import is correct
 from app.utils.s3 import S3Client
 from app.repositories.bank_statement_repository import BankStatementRepository
 from app.repositories.transaction_repository import TransactionRepository
@@ -10,10 +9,42 @@ from scripts.generate_transactions import generate_random_transactions
 
 
 class BankStatementService:
+    """
+    A class that provides methods for generating and uploading bank statements.
+    Methods:
+    - generate_statement(data): Generates a bank statement in CSV format based on the provided data.
+    - upload_statement(data): Uploads a bank statement to a storage service and saves the statement data in a repository.
+    - upload_statements(user_id, company_records): Generates and uploads bank statements for multiple companies and branches.
+    """
+    """
+        Generates a bank statement in CSV format based on the provided data.
+        Parameters:
+        - data (dict): The data required to generate the statement.
+        Returns:
+        - statement_file_path (str): The file path of the generated statement.
+        Raises:
+        - Exception: If there is an error generating the statement.
+        """
+    pass
+    """
+        Uploads a bank statement to a storage service and saves the statement data in a repository.
+        Parameters:
+        - data (dict): The data required to upload the statement.
+        Raises:
+        - Exception: If there is an error uploading the statement.
+        """
+    pass
+    """
+        Generates and uploads bank statements for multiple companies and branches.
+        Parameters:
+        - user_id (int): The ID of the user uploading the statements.
+        - company_records (dict): A dictionary containing the company records.
+        """
+    pass
+
     @staticmethod
     def generate_statement(data):
         try:
-            # Generate CSV statement file
             statement_file_path = Parser.generate_csv(data)
             return statement_file_path
         except Exception as e:
@@ -23,18 +54,12 @@ class BankStatementService:
     def upload_statement(data):
         try:
             file_path = data['file_path']
-            # Upload file to S3 and get the URL
             s3_url = S3Client.upload_file(file_path)
-            # Ensure statement_data is included
             data['statement_data'] = s3_url
-            # Save statement data to the repository
             BankStatementRepository.save_statement(data, s3_url)
-            # Get the statement ID
             statement_id = BankStatementRepository.get_statement_id(data)
             if statement_id:
-                # Parse transactions from the CSV file
                 transactions = Parser.parse_csv(file_path)
-                # Add transactions to the statement
                 TransactionRepository.add_transactions(
                     transactions, statement_id, data['branch_id'])
             else:
@@ -51,9 +76,10 @@ class BankStatementService:
                 branch = BranchRepository.get_branch_by_name_and_company(
                     branch_name, company_id)
                 if not branch:
-                    print(f"Branch {branch_name} not found for company {company}")
+                    print(
+                        f"Branch {branch_name} not found for company {company}")
                     continue
-                
+
                 data = generate_random_transactions(company, branch_name)
                 print(f"Statement generated for {company} - {branch_name}")
                 try:
@@ -67,6 +93,7 @@ class BankStatementService:
                         "file_path": statement
                     }
                     BankStatementService.upload_statement(upload_data)
-                    print(f"Statement uploaded successfully for {company} - {branch_name}")
+                    print(f"Statement uploaded successfully for {
+                          company} - {branch_name}")
                 except Exception as e:
                     print(f"Error: {str(e)}")
