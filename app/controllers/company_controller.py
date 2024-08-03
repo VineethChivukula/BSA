@@ -29,9 +29,6 @@ def add_company():
             "country": "USA"
         }
     """
-
-
-def add_company():
     data = request.get_json()
     try:
         CompanyService.add_company(data)

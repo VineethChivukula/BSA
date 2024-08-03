@@ -44,13 +44,3 @@ def upload_statement():
         return jsonify({'message': 'Statement uploaded successfully'}), 200
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-
-
-@statement_bp.route('/download_statements', methods=['POST'])
-def download_statements():
-    data = request.get_json()
-    try:
-        statements = BankStatementService.download_statements(data)
-        return jsonify(statements), 200
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
