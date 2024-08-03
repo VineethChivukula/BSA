@@ -1,5 +1,6 @@
 import os
 import csv
+import sys
 from datetime import datetime
 from app.models.user import User
 from app.models.company import Company
@@ -20,7 +21,7 @@ def read_csv(file_path):
         return transactions
     except IOError:
         print(f"Error reading CSV file: {file_path}")
-        return []
+        return None
 
 # Function to get or create a company in the database
 
@@ -35,7 +36,7 @@ def get_or_create_company(company_name):
         return company
     except Exception as e:
         print(f"Error creating or retrieving company: {e}")
-        return None
+        sys.exit(1)
 
 # Function to get or create a branch in the database
 
@@ -55,7 +56,7 @@ def get_or_create_branch(branch_name, company_name, bank_name):
         return branch
     except Exception as e:
         print(f"Error creating or retrieving branch: {e}")
-        return None
+        sys.exit(1)
 
 # Function to save a user in the database
 
@@ -145,6 +146,7 @@ def save_transactions_to_db(transactions):
     except Exception as e:
         db.session.rollback()
         print(f"Error saving transactions to the database: {e}")
+        return None
 
 # Function to update the database with transactions from CSV files
 
@@ -156,7 +158,10 @@ def update():
                 if file.endswith('.csv'):
                     file_path = os.path.join(root, file)
                     transactions = read_csv(file_path)
+                    if transactions is None:
+                        continue
                     save_transactions_to_db(transactions)
         print("Transactions saved to the database")
     except Exception as e:
         print(f"Error updating database: {e}")
+        sys.exit(1)

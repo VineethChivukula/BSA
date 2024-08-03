@@ -18,7 +18,8 @@ def list_s3_files(bucket, year, month):
         return filtered_keys
     except Exception as e:
         print(f"Error occurred while listing S3 files: {str(e)}")
-        return []
+        # sys.exit(1)  # Commented out to allow user to retry
+        return None
 
 
 def download():
@@ -38,8 +39,17 @@ def download():
         download()
     """
     try:
-        year = input("Enter the year for downloading statements: ")
-        month = input("Enter the month for downloading statements: ")
+        while True:
+            try:
+                year = int(
+                    input("Enter the year for downloading statements: "))
+                month = int(
+                    input("Enter the month for downloading statements: "))
+                if year < 0 or month < 1 or month > 12:
+                    raise ValueError("Invalid year or month.")
+                break
+            except ValueError as e:
+                print("Please enter a valid year and month in numbers format.")
         keys = list_s3_files(Config.S3_BUCKET, year, month)
         if keys:
             data = {'keys': keys}
@@ -53,3 +63,4 @@ def download():
             sys.exit(1)
     except Exception as e:
         print(f"Error occurred while downloading files: {str(e)}")
+        sys.exit(1)
