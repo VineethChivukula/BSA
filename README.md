@@ -16,8 +16,8 @@ The Bank Statement Aggregator is a comprehensive system designed to manage and p
 ```
 BSA
 ├── app
-|   ├── controllers
-|   |   ├── __init__.py 
+│   ├── controllers
+│   │   ├── __init__.py 
 │   │   ├── branch_controller.py
 │   │   ├── company_controller.py
 │   │   ├── statement_controller.py
@@ -38,7 +38,7 @@ BSA
 │   │   ├── aws_service.py
 │   │   ├── bank_statement_service.py
 │   │   ├── branch_service.py
-|   |   ├── company_service.py
+│   │   ├── company_service.py
 │   │   └── user_service.py
 │   ├── utils
 │   │   ├── db.py
@@ -59,7 +59,7 @@ BSA
 │   ├── update_database.py
 │   └── upload_to_s3.py
 ├── .gitignore
-├── .LICENSE
+├── LICENSE
 ├── main.py
 ├── README.md
 └── requirements.txt
