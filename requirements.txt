@@ -1,6 +1,5 @@
 Flask
 SQLAlchemy
 Flask-SQLAlchemy
-pymysql
 boto3
 cryptography
