@@ -59,6 +59,7 @@ BSA
 │   ├── update_database.py
 │   └── upload_to_s3.py
 ├── .gitignore
+├── erd.png
 ├── LICENSE
 ├── main.py
 ├── README.md
