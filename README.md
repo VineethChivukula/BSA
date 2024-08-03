@@ -6,7 +6,7 @@ The Bank Statement Aggregator is a comprehensive system designed to manage and p
 
 ## Prerequisites
 
-- Python 3.x
+- Python 3.12
 - MySQL
 - AWS Account with S3 Bucket
 - Required Python packages (listed in `requirements.txt`)
@@ -92,9 +92,9 @@ BSA
 
    ```bash
    cd migrations
-   mysql -u your_username -p
-   your_password
-   create database your_database;   
+   mysql -u [your_username] -p
+   [your_password]
+   create database [your_database];   
    source 001_create_company_table.sql
    source 002_create_branch_table.sql
    source 003_create_user_table.sql
@@ -104,7 +104,30 @@ BSA
 
 5. **Configure AWS S3**
 
-   Ensure you have AWS credentials set up with access to the S3 bucket.
+   Ensure you have AWS credentials set up with access to the S3 bucket. Under the bucket settings in the Permissions section, uncheck all the options for blocking all public access, and then copy and paste the policy code below into the bucket policy.
+
+   ```bash
+   {
+      "Version": "2012-10-17",
+      "Statement": [
+         {
+               "Effect": "Allow",
+               "Principal": "*",
+               "Action": "s3:ListBucket",
+               "Resource": "arn:aws:s3:::[bucket_name]"
+         },
+         {
+               "Effect": "Allow",
+               "Principal": "*",
+               "Action": [
+                  "s3:PutObject",
+                  "s3:GetObject"
+               ],
+               "Resource": "arn:aws:s3:::[bucket_name]/*"
+         }
+      ]
+   }
+   ```
 
 6. **Run The Application**
 
