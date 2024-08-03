@@ -114,27 +114,27 @@ This script creates random transactions for designated companies and branches. I
 
 ## Backend Workflow
 
-### Data Generation
+1. **Data Generation** 
 
-1. Generate random transactions for specified companies and branches.
-2. Save generated transactions to CSV files in a local directory.
+   1. Generate random transactions for specified companies and branches.
+   2. Save generated transactions to CSV files in a local directory.
 
-### File Upload
+2. **File Upload**
 
-1. Upload the generated CSV files from the local directory to AWS S3.
+   1. Upload the generated CSV files from the local directory to AWS S3.
 
-### Data Retrieval and Aggregation
+3. **Data Retrieval and Aggregation**
 
-1. Retrieve transactions for a specified company, year, and month from the database.
-2. Aggregate the transaction data and save the results to a CSV file.
+   1. Retrieve transactions for a specified company, year, and month from the database.
+   2. Aggregate the transaction data and save the results to a CSV file.
 
-### Data Encryption
+4. **Data Encryption**
 
-1. Encrypt sensitive user information before storing it in the database.
+   1. Encrypt sensitive user information before storing it in the database.
 
-### Database Management
+5. **Database Management**
 
-1. Manage and perform CRUD operations on various entities (users, companies, branches, transactions) using SQLAlchemy.
+   1. Manage and perform CRUD operations on various entities (users, companies, branches, transactions) using SQLAlchemy.
 
 ## Contributors
 
