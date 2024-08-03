@@ -4,6 +4,7 @@ import random
 from datetime import datetime, timedelta
 import calendar
 
+
 def generate_random_transactions(company_name, branch_name, branch_id, bank_name, statement_id, user_id, company_id, month, year, num_transactions=100):
     transactions = []
     days_in_month = calendar.monthrange(year, month)[1]
@@ -11,7 +12,8 @@ def generate_random_transactions(company_name, branch_name, branch_id, bank_name
     end_date = datetime(year, month, days_in_month)
 
     for i in range(num_transactions):
-        transaction_date = start_date + timedelta(days=random.randint(0, (end_date - start_date).days))
+        transaction_date = start_date + \
+            timedelta(days=random.randint(0, (end_date - start_date).days))
         transaction = {
             'transaction_id': i + 1,
             'statement_id': statement_id,
@@ -28,17 +30,20 @@ def generate_random_transactions(company_name, branch_name, branch_id, bank_name
         transactions.append(transaction)
     return transactions
 
+
 def save_transactions_to_csv(transactions, filename):
     os.makedirs('gen_data', exist_ok=True)
     file_path = os.path.join('gen_data', filename)
     try:
         with open(file_path, 'w', newline='') as csvfile:
-            fieldnames = ['transaction_id', 'statement_id', 'date', 'amount', 'description', 'company_name', 'branch_name', 'branch_id', 'bank_name', 'user_id', 'company_id']
+            fieldnames = ['transaction_id', 'statement_id', 'date', 'amount', 'description',
+                          'company_name', 'branch_name', 'branch_id', 'bank_name', 'user_id', 'company_id']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(transactions)
     except IOError:
         print(f"Error: Failed to write transactions to {filename}")
+
 
 def get_month_year_selection():
     current_year = datetime.now().year
@@ -71,7 +76,17 @@ def get_month_year_selection():
 
     return month_selection, previous_years[year_selection - 1]
 
+
 def generate():
+    """
+    Generates bank statements for multiple companies and branches based on the given month and year selection.
+    Returns:
+        None
+    """
+    # Define the companies and their details
+    # Get the month and year selection from the user
+    # If month or year is not provided, return
+    # Generate transactions for each company and branch
     companies = {
         'Apple_India': {'branches': [('Hyderabad', 1), ('Mumbai', 2), ('Bangalore', 3)], 'bank_name': 'SBI', 'user_id': 1, 'company_id': 1},
         'Apple_US': {'branches': [('New York', 4), ('San Francisco', 5), ('Los Angeles', 6)], 'bank_name': 'Chase', 'user_id': 2, 'company_id': 2},
@@ -86,8 +101,9 @@ def generate():
 
     for company, details in companies.items():
         for branch_name, branch_id in details['branches']:
-            statement_id = branch_id 
-            transactions = generate_random_transactions(company, branch_name, branch_id, details['bank_name'], statement_id, details['user_id'], details['company_id'], month, year)
+            statement_id = branch_id
+            transactions = generate_random_transactions(
+                company, branch_name, branch_id, details['bank_name'], statement_id, details['user_id'], details['company_id'], month, year)
             filename = f'{company}_{branch_name}_{year}_{month:02d}.csv'
             save_transactions_to_csv(transactions, filename)
             print(f'Statement generated for {company} - {branch_name}')

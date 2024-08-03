@@ -1,7 +1,22 @@
 import os
 from app.utils.s3 import S3Client
 
+
 def upload():
+    """
+    Uploads all CSV files in the 'gen_data' directory to Amazon S3.
+
+    This function creates the 'gen_data' directory if it doesn't exist and walks through all the files in the directory.
+    It uploads each file with a '.csv' extension to Amazon S3 using the S3Client.upload_file() method.
+    If the upload is successful, it prints the file name and the S3 URL. If there is an error during the upload,
+    it prints the file name and the error message.
+
+    Raises:
+        Exception: If there is an error creating the 'gen_data' directory.
+
+    Returns:
+        None
+    """
     try:
         os.makedirs('gen_data', exist_ok=True)
         for root, dirs, files in os.walk('gen_data'):

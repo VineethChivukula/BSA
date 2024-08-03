@@ -13,6 +13,27 @@ def get_transactions_for_company(company_name, year, month):
     return transactions
 
 def aggregate_and_save(transactions, company_name):
+    """
+    Aggregate the given transactions and save the aggregated data to a CSV file.
+    Args:
+        transactions (list): A list of Transaction objects representing individual transactions.
+        company_name (str): The name of the company.
+    Returns:
+        None
+    Raises:
+        None
+    Example:
+        aggregate_and_save(transactions, "ABC Company")
+    Notes:
+        - The function calculates the total debits and total credits from the given transactions.
+        - It creates a directory named 'aggr_data' if it doesn't exist.
+        - The aggregated data is saved to a CSV file with the name '{company_name}_aggregated.csv'.
+        - The CSV file contains the following fields: 'transaction_id', 'statement_id', 'date', 'amount',
+          'description', 'company_name', 'branch_id', 'branch_name', 'bank_name'.
+        - Each transaction and its corresponding branch information are written as a row in the CSV file.
+        - The total debits and total credits are also written as separate rows at the end of the CSV file.
+        - The function prints the path of the saved file, total debits, and total credits.
+    """
     total_debits = sum(t.Transaction.amount for t in transactions if t.Transaction.amount < 0)
     total_credits = sum(t.Transaction.amount for t in transactions if t.Transaction.amount > 0)
     filename = f'aggr_data/{company_name}_aggregated.csv'
