@@ -92,8 +92,9 @@ def generate():
         companies = {
             'Apple_India': {'branches': [('Hyderabad', 1), ('Mumbai', 2), ('Bangalore', 3)], 'bank_name': 'SBI', 'user_id': 1, 'company_id': 1},
             'Apple_US': {'branches': [('New York', 4), ('San Francisco', 5), ('Los Angeles', 6)], 'bank_name': 'Chase', 'user_id': 2, 'company_id': 2},
-            'Google_India': {'branches': [('Bangalore', 7), ('Delhi', 8), ('Pune', 9)], 'bank_name': 'SBI', 'user_id': 3, 'company_id': 3},
-            'Google_US': {'branches': [('Mountain View', 10), ('Seattle', 11), ('Austin', 12)], 'bank_name': 'Chase', 'user_id': 4, 'company_id': 4}
+
+            'Google_India': {'branches': [('Bangalore', 7), ('Delhi', 8), ('Pune', 9)], 'bank_name': 'ICICI', 'user_id': 3, 'company_id': 3},
+            'Google_US': {'branches': [('Mountain View', 10), ('Seattle', 11), ('Austin', 12)], 'bank_name': 'DBS', 'user_id': 4, 'company_id': 4}
         }
 
         # Get the month and year selection from the user
